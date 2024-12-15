@@ -1,0 +1,10 @@
+<button mat-flat-button (click)="fileInput.click()">Subir Archivos</button>
+<input
+    #fileInput
+    type="file"
+    hidden
+    (change)="onFileSelected($event)"
+    [multiple]="allowMultiple"
+    [accept]="acceptedTypes"
+  />
+
