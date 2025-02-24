@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { EmiiterUploadFile } from '../../models/emitter-upload-file.model';
 import { UploadFileService } from './upload-file.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class UploadFileComponent {
 
   @Input() allowMultiple = true; // Permitir selección múltiple
   @Input() acceptedTypes = 'application/pdf,image/jpeg,image/png'; // Tipos aceptados (e.g., "image/*,.pdf")
-  @Output() res = new EventEmitter<any>();
+  @Output() res = new EventEmitter<EmiiterUploadFile>();
 
   uploadFileSvc = inject(UploadFileService);
 
@@ -51,7 +52,7 @@ export class UploadFileComponent {
               formData.append('files', file); // 'files' debe coincidir con el nombre esperado en el backend
           });
           this.uploadFileSvc.upload(formData).subscribe(res => {
-              this.res.emit(res);
+              this.res.emit({ rentalValues: res.response, formData });
           });
       }
   }

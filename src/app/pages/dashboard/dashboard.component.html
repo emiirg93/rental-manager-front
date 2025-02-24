@@ -1,3 +1,3 @@
 <h1 class="text-center">Suba Sus Documentos</h1>
-<p>Valor Alquiler Mes de {{monthName}}: {{res?.response.alquiler | currency }}</p>
-<app-upload-file (res)="res = $event"/>
+<p>Valor Alquiler Mes de {{monthName}}: {{ alquier | currency }}</p>
+<app-upload-file (res)="setEmitterUploadResponse($event)"/>
