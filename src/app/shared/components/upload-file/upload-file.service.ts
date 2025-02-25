@@ -9,6 +9,7 @@ import { BaseService } from '../../services/base.service';
 export class UploadFileService extends BaseService {
 
     upload(formData:FormData) : Observable<UploadFilesResponse> {
+        console.log('api_url',this.apiUrl);
         return this.http.post<UploadFilesResponse>(`${this.apiUrl}/upload-files`,formData);
     }
 }
