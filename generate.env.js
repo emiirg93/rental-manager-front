@@ -11,7 +11,7 @@ const {
 
 // Contenido de environment.ts
 const contentProd = `export const environment = {
-API_URL: '${API_URL}'
+    API_URL: '${API_URL}'
 };`;
 
 fs.writeFileSync('src/environments/environment.ts', contentProd);

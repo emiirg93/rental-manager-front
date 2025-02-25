@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class BaseService {
     protected readonly http = inject(HttpClient);
-    protected readonly apiUrl = environment.api_url;
+    protected readonly apiUrl = environment.API_URL;
 
     protected createQueryParams(params: Record<string, string | number | boolean>): HttpParams {
         let queryParams = new HttpParams();
