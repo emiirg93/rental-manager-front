@@ -1,5 +1,9 @@
-<button mat-flat-button (click)="fileInput.click()">Subir Archivos</button>
-<input
+<div class="upload-container">
+  @if(selectedFiles.length === 0){
+    <p class="upload-info">Por favor, suba los comprobantes de pago correspondientes al mes de {{monthName}}.</p>
+  }
+  <button mat-flat-button (click)="fileInput.click()">Subir Archivos</button>
+  <input
     #fileInput
     type="file"
     hidden
@@ -7,4 +11,48 @@
     [multiple]="allowMultiple"
     [accept]="acceptedTypes"
   />
+
+  <!-- File Preview Section -->
+  <div class="file-preview-container" *ngIf="filePreviews.length > 0">
+    <h3>Vista previa de archivos</h3>
+    <div class="file-previews">
+      <div class="file-preview-item" *ngFor="let preview of filePreviews; let i = index">
+        <div
+          class="preview-content"
+          (click)="openFilePreview(preview)"
+          (keydown.enter)="openFilePreview(preview)"
+          (keyup.space)="openFilePreview(preview)"
+          tabindex="0">
+          <!-- Image preview -->
+          <img *ngIf="preview.type === 'image'" [src]="preview.url" alt="Preview" class="preview-image">
+
+          <!-- PDF preview -->
+          <div *ngIf="preview.type === 'pdf'" class="pdf-preview">
+            <mat-icon>picture_as_pdf</mat-icon>
+            <span>{{ preview.name }}</span>
+          </div>
+        </div>
+        <div class="preview-info">
+          <span class="file-name">{{ preview.name }}</span>
+          <span class="file-size">{{ formatFileSize(preview.size) }}</span>
+        </div>
+        <button mat-icon-button color="warn" (click)="removeFile(i)" class="remove-button">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="upload-actions" *ngIf="filePreviews.length > 0">
+      <button mat-raised-button color="primary" (click)="uploadFiles()" [disabled]="uploadInProgress">
+        <mat-icon>cloud_upload</mat-icon>
+        Confirmar subida
+      </button>
+      <button mat-button (click)="clearFiles()">
+        Cancelar
+      </button>
+    </div>
+
+    <mat-progress-bar *ngIf="uploadInProgress" [value]="uploadProgress" class="upload-progress"></mat-progress-bar>
+  </div>
+</div>
 

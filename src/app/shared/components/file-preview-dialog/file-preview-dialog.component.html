@@ -1,0 +1,30 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>{{ data.name }}</h2>
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="dialog-content">
+    <!-- Imagen -->
+    <img *ngIf="data.type === 'image'" [src]="data.url" alt="Preview" class="image-preview">
+
+    <!-- PDF -->
+    <iframe *ngIf="data.type === 'pdf'" [src]="safeUrl" class="pdf-preview" frameborder="0"></iframe>
+
+    <!-- Otros tipos de archivo -->
+    <div *ngIf="data.type === 'other'" class="other-file-preview">
+      <mat-icon class="file-icon">insert_drive_file</mat-icon>
+      <p>Este tipo de archivo no se puede previsualizar</p>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="downloadFile()">
+      <mat-icon>download</mat-icon>
+      Descargar
+    </button>
+    <button mat-button (click)="close()">Cerrar</button>
+  </div>
+</div>
