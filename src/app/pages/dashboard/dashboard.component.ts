@@ -33,6 +33,10 @@ export class DashboardComponent {
         return nombreMes.charAt(0).toUpperCase() + nombreMes.slice(1);
     }
 
+    get year() {
+        return this.date.getFullYear();
+    }
+
     get alquier() : number {
         return Utils.val(this.emitter,'rentalValues.alquiler',0);
     }

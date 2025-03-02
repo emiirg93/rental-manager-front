@@ -35,6 +35,10 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
+
+  &.uploaded {
+    border-color: #4caf50;
+  }
 }
 
 .preview-content {
@@ -54,7 +58,6 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.1);
-    pointer-events: none;
   }
 }
 
@@ -64,7 +67,7 @@
   object-fit: cover;
 }
 
-.pdf-preview {
+.pdf-preview, .other-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,6 +88,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+}
+
+.other-preview {
+  color: #757575;
 }
 
 .preview-info {
@@ -113,13 +120,28 @@
   background-color: rgba(255, 255, 255, 0.8);
   width: 24px;
   height: 24px;
-  line-height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   mat-icon {
     font-size: 16px;
     height: 16px;
     width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    line-height: 1;
   }
+}
+
+.uploaded-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #4caf50;
 }
 
 .upload-actions {
@@ -133,8 +155,7 @@
   margin-top: 16px;
 }
 
-.upload-info {
-  margin-bottom: 1rem;
-  color: rgba(0, 0, 0, 0.6);
+.upload-info{
   text-align: center;
 }
+
