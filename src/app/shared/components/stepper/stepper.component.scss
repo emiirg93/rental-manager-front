@@ -1,0 +1,89 @@
+.stepper-container {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+
+  &:not(:last-child) {
+    .step-connector {
+      position: absolute;
+      top: 16px;
+      left: calc(50% + 16px);
+      right: calc(-50% + 16px);
+      height: 3px;
+      background-color: #e0e0e0;
+      z-index: -1;
+    }
+  }
+
+  &.active {
+    .step-circle {
+      background-color: #3f51b5;
+      color: white;
+      border-color: #3f51b5;
+    }
+
+    .step-label {
+      color: #3f51b5;
+      font-weight: 500;
+    }
+  }
+
+  &.completed {
+    .step-circle {
+      background-color: #4caf50;
+      color: white;
+      border-color: #4caf50;
+    }
+
+    .step-connector {
+      background-color: #4caf50;
+    }
+
+    .step-label {
+      color: #4caf50;
+    }
+  }
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.step-label {
+  font-size: 14px;
+  color: #757575;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+}
+

@@ -5,6 +5,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Utils } from '../../core/helpers/utils';
+import { StepperComponent } from '../../shared/components/stepper/stepper.component';
 import { UploadFileComponent } from '../../shared/components/upload-file/upload-file.component';
 import { EmiiterUploadFile } from '../../shared/models/emitter-upload-file.model';
 
@@ -17,7 +18,9 @@ import { EmiiterUploadFile } from '../../shared/models/emitter-upload-file.model
         MatCardModule,
         MatListModule,
         MatExpansionModule,
-        MatIconModule
+        MatIconModule,
+        StepperComponent,
+        StepperComponent
     ],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss'
