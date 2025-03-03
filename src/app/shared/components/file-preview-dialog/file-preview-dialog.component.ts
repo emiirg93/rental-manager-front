@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common'
-import { Component, Inject } from '@angular/core'
-import { MatButtonModule } from '@angular/material/button'
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog'
-import { MatIconModule } from '@angular/material/icon'
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser'
+import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 interface FilePreview {
   name: string
@@ -35,17 +35,17 @@ export class FilePreviewDialogComponent {
     }
 
     close(): void {
-        this.dialogRef.close()
+        this.dialogRef.close();
     }
 
     downloadFile(): void {
     // Crear un enlace temporal para descargar el archivo
-        const a = document.createElement('a')
-        a.href = this.data.url
-        a.download = this.data.name
-        document.body.appendChild(a)
-        a.click()
-        document.body.removeChild(a)
+        const a = document.createElement('a');
+        a.href = this.data.url;
+        a.download = this.data.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     }
 }
 
