@@ -9,9 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrl: './stepper.component.scss',
 })
 export class StepperComponent implements OnInit {
-  @Input() currentStepIndex = 2;
+  @Input() currentStepIndex = 0;
   @Input() steps: string[] = ['Boletas ABL y Expensas', 'Comprobante de pago y envio de email', 'Finalización'];
-  @Input() lastStepCompleted = true;
+  @Input() lastStepCompleted = false;
 
   ngOnInit(): void {
       if (this.currentStepIndex < 0) {

@@ -1,6 +1,9 @@
 .stepper-container {
   width: 100%;
   padding: 20px 0;
+  @media (min-width: 768px) {
+    padding: 20px 0;
+  }
 }
 
 .stepper {
@@ -9,6 +12,9 @@
   align-items: center;
   position: relative;
   width: 100%;
+  @media (min-width: 768px) {
+    gap: 16px;
+  }
 }
 
 .step {
@@ -22,12 +28,19 @@
   &:not(:last-child) {
     .step-connector {
       position: absolute;
-      top: 16px;
-      left: calc(50% + 16px);
-      right: calc(-50% + 16px);
+      top: 12px; // Adjusted for mobile
+      left: calc(50% + 12px); // Adjusted for mobile
+      right: calc(-50% + 12px); // Adjusted for mobile
       height: 3px;
       background-color: #e0e0e0;
       z-index: -1;
+
+      @media (min-width: 768px) {
+        top: 16px;
+        left: calc(50% + 1px);
+        right: calc(-50% + 1px);
+        height: 3px;
+      }
     }
   }
 
@@ -62,28 +75,55 @@
 }
 
 .step-circle {
-  width: 32px;
-  height: 32px;
+  width: 24px; // Smaller on mobile
+  height: 24px;
   border-radius: 50%;
   background-color: white;
   border: 2px solid #e0e0e0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 500;
+  font-size: 12px; // Smaller font on mobile
   transition: all 0.3s ease;
+
+  @media (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
 }
 
 .step-label {
-  font-size: 14px;
+  font-size: 11px; // Smaller on mobile
   color: #757575;
   text-align: center;
   transition: all 0.3s ease;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // Show max 2 lines
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  line-height: 1.2;
+  min-height: 2.4em; // Ensure consistent height for 2 lines
+  @media (min-width: 768px) {
+    font-size: 14px;
+    -webkit-line-clamp: 2;
+    line-height: 1.3;
+    min-height: 2.6em;
+  }
 }
 
 .check-icon {
-  width: 16px;
-  height: 16px;
+  width: 12px; // Smaller on mobile
+  height: 12px;
+  @media (min-width: 768px) {
+    width: 16px;
+    height: 16px;
+  }
 }
 
