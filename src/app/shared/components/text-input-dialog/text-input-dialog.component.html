@@ -1,0 +1,20 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>
+    <mat-icon>mail</mat-icon>
+    Email
+  </h2>
+  <mat-dialog-content>
+    <p class="dialog-description">Si desea agregar un comentario, hágalo aquí:</p>
+    <mat-form-field appearance="outline" class="comment-field">
+      <mat-label>Comentario</mat-label>
+      <textarea matInput [(ngModel)]="data.text" placeholder="ej: canilla rota..." rows="4"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onAccept()">
+      <mat-icon>send</mat-icon>
+      Enviar
+    </button>
+  </mat-dialog-actions>
+</div>

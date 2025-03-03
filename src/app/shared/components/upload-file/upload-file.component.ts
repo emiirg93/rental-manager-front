@@ -10,6 +10,7 @@ import { environment } from '../../../../environments/environment';
 import { RentalValues } from '../../models/rental-values.model';
 
 import { FilePreviewDialogComponent } from '../file-preview-dialog/file-preview-dialog.component';
+import { TextInputDialogComponent } from '../text-input-dialog/text-input-dialog.component';
 import { UploadFileService } from './upload-file.service';
 
 interface FilePreview {
@@ -162,28 +163,7 @@ export class UploadFileComponent {
               },
           });
       }else if(this.rentalValues) {
-          // Enviar email.
-          const formData = new FormData();
-          this.filePreviews.forEach((filePreview) => {
-              formData.append('files', filePreview.file);
-          });
-
-          formData.append('detalleAlquiler', JSON.stringify(this.rentalValues));
-          formData.append('to', environment.OWNER_EMAIL);
-          formData.append('subject', `Pago Alquiler - ${this.date.monthName} ${this.date.year}`);
-          formData.append('text', '');
-
-          this.uploadFileSvc.sendEmail(formData).subscribe({
-              next: (res)=> {
-                  console.log(res.message);
-                  // Marcar archivos como subidos
-                  this.filePreviews.forEach((file) => {
-                      if (!file.uploaded) {
-                          file.uploaded = true;
-                      }
-                  });
-              }
-          });
+          this.openTextInputDialog();
       }
   }
 
@@ -198,6 +178,47 @@ export class UploadFileComponent {
           maxWidth: '1000px',
           maxHeight: '90vh',
       });
+  }
+
+  openTextInputDialog(): void {
+      const dialogRef = this.dialog.open(TextInputDialogComponent, {
+          width: '600px', // Ajusta según necesites
+          data: {
+              text:'',
+              confirmSend:false
+          },
+          disableClose:true
+
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+          console.log('Comentario ingresado:', result);
+          if(result.confirmSend){
+              // Enviar email.
+              const formData = new FormData();
+              this.filePreviews.forEach((filePreview) => {
+                  formData.append('files', filePreview.file);
+              });
+
+              formData.append('detalleAlquiler', JSON.stringify(this.rentalValues));
+              formData.append('to', environment.OWNER_EMAIL);
+              formData.append('subject', `Pago Alquiler - ${this.date.monthName} ${this.date.year}`);
+              formData.append('text', result.text);
+
+              this.uploadFileSvc.sendEmail(formData).subscribe({
+                  next: (res)=> {
+                      console.log(res.message);
+                      // Marcar archivos como subidos
+                      this.filePreviews.forEach((file) => {
+                          if (!file.uploaded) {
+                              file.uploaded = true;
+                          }
+                      });
+                  }
+              });
+          }
+      }
+      );
   }
 }
 

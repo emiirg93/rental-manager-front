@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.dialog-container {
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dialog-description {
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #666;
+}
+
+.comment-field {
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+mat-dialog-actions {
+  margin-top: 24px;
+  padding: 0;
+}
+
+button {
+  min-width: 100px;
+}
+
+@media (max-width: 600px) {
+  .dialog-container {
+    padding: 16px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .dialog-description {
+    font-size: 14px;
+  }
+}
