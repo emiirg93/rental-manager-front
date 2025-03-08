@@ -1,5 +1,5 @@
 <!-- <h1 class="text-center">Suba Sus Documentos</h1>
-<p>Valor Alquiler Mes de {{monthName}}: {{ alquier | currency }}</p>
+<p>Valor Alquiler Mes de {{monthName}}: {{ alquier }}</p>
 <app-upload-file (res)="setEmitterUploadResponse($event)"/>
  -->
 
@@ -15,7 +15,7 @@
           <h2>Alquiler</h2>
         </div>
         <div class="card-value single-value">
-          <span class="amount">{{ 317000 | currency }}</span>
+          <span class="amount">{{ valorAlquiler }}</span>
         </div>
       </mat-card-content>
     </mat-card>
@@ -30,12 +30,12 @@
         <div class="card-details">
           <div class="detail-item">
             <span>Impuesto Inmobiliario</span>
-            <span class="amount">{{ impuestoInmobiliario | currency }}</span>
+            <span class="amount">{{ impuestoInmobiliario }}</span>
           </div>
         </div>
         <div class="card-total">
           <span>Total</span>
-          <span class="amount">{{ abl | currency }}</span>
+          <span class="amount">{{ abl }}</span>
         </div>
       </mat-card-content>
     </mat-card>
@@ -50,12 +50,12 @@
         <div class="card-details">
           <div class="detail-item">
             <span>Extraordinarias</span>
-            <span class="amount">{{ extraordinarias | currency }}</span>
+            <span class="amount">{{ extraordinarias }}</span>
           </div>
         </div>
         <div class="card-total">
           <span>Total</span>
-          <span class="amount">{{ expensas | currency }}</span>
+          <span class="amount">{{ expensas }}</span>
         </div>
       </mat-card-content>
     </mat-card>
@@ -71,7 +71,7 @@
         <h2 >Total a Pagar - {{monthName}}</h2>
       </div>
       <div class="card-value single-value">
-        <span class="total-amount">{{ alquier | currency }}</span>
+        <span class="total-amount">{{ alquier }}</span>
       </div>
     </mat-card-content>
   </mat-card>

@@ -37,6 +37,20 @@ export class Utils {
         // Si llega acá, devuelve el valor encontrado
         return current;
     }
+
+    static formatToARS = (value: number | string): string => {
+        const numberValue = typeof value === 'string' ? parseFloat(value) : value;
+
+        if (isNaN(numberValue)) {
+            throw new Error('El valor proporcionado no es un número válido.');
+        }
+
+        return numberValue.toLocaleString('es-AR', {
+            style: 'currency',
+            currency: 'ARS',
+            minimumFractionDigits: 2,
+        });
+    };
 }
 
 
