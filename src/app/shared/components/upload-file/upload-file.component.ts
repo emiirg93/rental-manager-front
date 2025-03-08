@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import type { EmiiterUploadFile } from '../../models/emitter-upload-file.model';
+import type { EmitterUploadFile } from '../../models/emitter-upload-file.model';
 
 import { environment } from '../../../../environments/environment';
 import { RentalValues } from '../../models/rental-values.model';
@@ -39,7 +39,7 @@ export class UploadFileComponent {
   @Input() allowMultiple = true;
   @Input() acceptedTypes = 'application/pdf,image/jpeg,image/png';
   @Input() date!: {monthName:string, year:number};
-  @Output() res = new EventEmitter<EmiiterUploadFile>();
+  @Output() res = new EventEmitter<EmitterUploadFile>();
 
   uploadFileSvc = inject(UploadFileService);
   dialog = inject(MatDialog);
@@ -52,6 +52,7 @@ export class UploadFileComponent {
       description:'Confirmar subida'
   };
   rentalValues!:RentalValues;
+  endOfTheExperience = false;
 
   get validFormats() {
       return this.acceptedTypes.split(',');
@@ -143,7 +144,7 @@ export class UploadFileComponent {
               next: (res) => {
                   this.uploadInProgress = false;
                   this.uploadProgress = 100;
-                  this.res.emit({ rentalValues: res.response, formData });
+                  this.res.emit({ stepIndex: 1, rentalValues: res.response, formData });
 
                   this.rentalValues = res.response;
 
@@ -214,6 +215,9 @@ export class UploadFileComponent {
                               file.uploaded = true;
                           }
                       });
+
+                      this.res.emit({stepIndex:2});
+                      this.endOfTheExperience = true;
                   }
               });
           }

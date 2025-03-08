@@ -1,6 +1,7 @@
 import { RentalValues } from './rental-values.model';
 
-export interface EmiiterUploadFile {
-  rentalValues : RentalValues;
-  formData : FormData;
+export interface EmitterUploadFile {
+  rentalValues?: RentalValues;
+  formData?: FormData;
+  stepIndex?: number;
 }

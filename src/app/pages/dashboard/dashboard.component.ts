@@ -7,7 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { Utils } from '../../core/helpers/utils';
 import { StepperComponent } from '../../shared/components/stepper/stepper.component';
 import { UploadFileComponent } from '../../shared/components/upload-file/upload-file.component';
-import { EmiiterUploadFile } from '../../shared/models/emitter-upload-file.model';
+import { EmitterUploadFile } from '../../shared/models/emitter-upload-file.model';
 
 @Component({
     selector: 'app-dashboard',
@@ -27,7 +27,7 @@ import { EmiiterUploadFile } from '../../shared/models/emitter-upload-file.model
 })
 export class DashboardComponent {
 
-    public emitter!: EmiiterUploadFile ;
+    public emitter!: EmitterUploadFile;
     date : Date = new Date();
 
     get monthName() {
@@ -60,7 +60,11 @@ export class DashboardComponent {
         return Utils.val(this.emitter,'rentalValues.expensas.totalExpensas',0);
     }
 
-    setEmitterUploadResponse($event : EmiiterUploadFile){
-        this.emitter = $event;
+    get stepIndex() : number {
+        return this.emitter?.stepIndex ?? 0;
+    }
+
+    setEmitterUploadResponse($event : EmitterUploadFile){
+        this.emitter = {... this.emitter, ...$event};
     }
 }

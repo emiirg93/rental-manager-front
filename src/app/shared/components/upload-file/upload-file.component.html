@@ -1,10 +1,5 @@
 <div class="upload-container">
-  @if(iconUpload.icon !== 'mail'){
-    <p class="upload-info">Por favor, suba los comprobantes de <strong>ABL - EXPENSAS</strong> correspondientes al mes de {{date.monthName}}.</p>
-  } @else {
-    <p class="upload-info">Por último, suba el comprobante <strong>PAGO ALQUILER</strong> correspondiente al mes de {{date.monthName}}.</p>
-  }
-  <button mat-flat-button (click)="fileInput.click()">Subir Archivos</button>
+  <button mat-flat-button (click)="fileInput.click()" [disabled]="endOfTheExperience">Subir Archivos</button>
   <input
     #fileInput
     type="file"

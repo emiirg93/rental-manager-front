@@ -81,12 +81,12 @@
     <mat-card-header>
       <mat-card-title>
         <mat-icon>cloud_upload</mat-icon>
-        Suba Sus Documentos
+        Documentación
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <app-stepper></app-stepper>
-      <app-upload-file [date]="{monthName,year}" (res)="setEmitterUploadResponse($event)"></app-upload-file>
+      <app-stepper [currentStepIndex]="stepIndex" [lastStepCompleted]="stepIndex === 2"/>
+      <app-upload-file [date]="{monthName,year}" (res)="setEmitterUploadResponse($event)"/>
     </mat-card-content>
   </mat-card>
 </div>
